@@ -102,6 +102,51 @@ DO NOT ANSWER THE QUESTION DIRECTLY, ONLY OUTPUT THE 'summarized search results'
             return result
 ```
 
+# AN EXAMPLE OF A QUESTION HARD TO ANSWER WITH VECTOR SEARCH ONLY:
+
+An example of a question that would be very difficult to answer with just vector search:
+"Summarize the news today for Orlando, FL and New York City"
+
+```
+Action: summarize_search_results->queries: ['latest news Orlando FL', 'breaking news Orlando FL', 'news updates New York City', 'current events New York City']
+```
+
+
+Based on the verified sources provided, here is a summary of the news today for Orlando, FL and New York City:
+
+## Orlando, FL News:
+1. According to WESH.com, a local nonprofit in Central Florida is introducing a new approach to mental health services.
+2. A driver in Flagler County hit three pedestrians, resulting in the death of two individuals.
+3. Flagler County is opening a cold weather shelter due to dropping temperatures in Central Florida.
+4. There was a hit-and-run crash in Flagler County that resulted in two deaths and one injury.
+5. A motorcyclist died in a three-vehicle crash.
+6. A woman was shot and injured in Orlando.
+7. A fatal crash occurred in Eustis, resulting in the death of the driver.
+8. A suspect has been identified after a woman was killed in a shooting in Marion County.
+9. Communities in Central Florida will be honoring Dr. Martin Luther King Jr.
+10. Eatonville held a parade to celebrate the legacy of Dr. Martin Luther King Jr.
+11. The police are searching for a driver involved in a deadly hit-and-run crash in Polk County.
+12. The National Transportation Safety Board is investigating deadly crashes involving Brightline in Melbourne.
+
+## New York City News:
+1. Subfreezing temperatures are expected in New York City, with a chance of breaking a 700+ day snow record.
+2. A father is in critical condition after trying to save his daughter from a fire in Queens. The entire family has been hospitalized.
+3. A viral video shows a shirtless Buffalo Bills fan helping shovel snow at Highmark Stadium.
+4. GOP candidates are campaigning vigorously on the eve of the caucus.
+5. Netanyahu made a defiant statement, saying that no one can halt Israel's war to crush Hamas.
+6. Trump's closing pitch to Iowa Republicans emphasizes that their votes can help him punish his enemies.
+7. Texas barred border agents from entering a park to try to save three migrants who drowned.
+8. New York City experienced severe winter weather, with low-temperature records being set.
+
+## Sources:
+- [WESH.com](https://www.wesh.com/local-news)
+- [Fox35Orlando.com](https://www.fox35orlando.com/local-news)
+- [WFTV.com](https://www.wftv.com/homepage)
+- [NBCNewYork.com](https://www.nbcnewyork.com/)
+- [CBSNews.com/NewYork](https://www.cbsnews.com/newyork/local-news/new-york/)
+- [TakeWalks.com](https://www.takewalks.com/blog/best-apps-nyc-culture-events) 
+
+
 # QUERY WITH R&D OUTPUT AS VERIFIED SOURCES:
 
 ```
