@@ -24,6 +24,7 @@ self.r_n_d(
 ```
 
 
+# R&D Step
 ```
     def r_n_d(
         self, text: str
@@ -59,6 +60,8 @@ DO NOT ANSWER THE QUESTION DIRECTLY, ONLY OUTPUT THE 'summarized search results'
         print("R&D ends now")
         return response
 ```
+
+# Action
 
 ```
     @action(name="summarize_search_results", stop=True)
