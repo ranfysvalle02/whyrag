@@ -96,7 +96,146 @@ DO NOT ANSWER THE QUESTION DIRECTLY, ONLY OUTPUT THE 'summarized search results'
             return result
 ```
 
+# QUERY WITH R&D OUTPUT AS VERIFIED SOURCES:
 
+```
+LET'S PLAY A GAME. 
+            THINK CAREFULLY AND STEP BY STEP.
+            
+            Given the following verified sources and a question, using only the verified sources content create a final detailed answer in markdown. 
+            
+            Remember while answering:
+                - The only verified sources are between START VERIFIED SOURCES and END VERIFIED SOURCES.
+                - Only display images and links if they are found in the verified sources
+                - If displaying images or links from the verified sources, copy the images and links exactly character for character and make sure the URL parameters are the same.
+                - Do not make up any part of an answer. 
+                - Questions might be vague or have multiple interpretations, you must ask follow up questions in this case.
+                - BE AS DETAILED AS POSSIBLE.
+                - IF the verified sources can answer the question in multiple different ways, THEN respond with each of the possible answers.
+                - Formulate your response using ONLY VERIFIED SOURCES. 
+
+            [START VERIFIED SOURCES]
+            [search='latest news Orlando FL']
+
+url/source:https://www.wesh.com/local-news
+summary:- "Local nonprofit to bring new approach to mental health services in Central Florida" - This quote indicates that there is a local nonprofit in Central Florida that is introducing a new approach to mental health services.
+- "FHP: Driver found in pizzeria parking lot after hitting 3 pedestrians, killing 2 in Flagler County" - This quote mentions a driver who hit three pedestrians, resulting in the death of two individuals in Flagler County.
+- "Flagler County to open cold weather shelter as temperatures drop in Central Florida this week" - This quote states that Flagler County is opening a cold weather shelter due to dropping temperatures in Central Florida.
+- "FHP: 2 dead, 1 hurt in Flagler hit-and-run crash" - This quote highlights a hit-and-run crash in Flagler County that resulted in two deaths and one injury.
+- "FHP: 1 motorcyclist dead after three-vehicle crash" - This quote mentions a three-vehicle crash that resulted in the death of a motorcyclist.
+- "Police: Woman shot, injured in Orlando" - This quote indicates that a woman was shot and injured in Orlando.
+- "FHP: Driver killed in Eustis crash" - This quote mentions a fatal crash in Eustis where a driver was killed.
+- "Deputies: Suspect identified after woman killed in Marion County shooting" - This quote states that a suspect has been identified after a woman was killed in a shooting in Marion County.
+- "Communities to honor Dr. Martin Luther King Jr. in Central Florida" - This quote mentions that communities in Central Florida will be honoring Dr. Martin Luther King Jr.
+- "Eatonville parade celebrates Dr. Martin Luther King Jr.'s legacy" - This quote highlights a parade in Eatonville that celebrates the legacy of Dr. Martin Luther King Jr.
+- "Police looking for driver in deadly Polk County hit-and-run crash" - This quote indicates that the police are searching for a driver involved in a deadly hit-and-run crash in Polk County.
+- "National Transportation Safety Board investigating deadly Brightline crashes in Melbourne" - This quote mentions that the National Transportation Safety Board is investigating deadly crashes involving Brightline in Melbourne.
+
+[search='latest news Orlando FL']
+
+url/source:https://www.fox35orlando.com/local-news
+summary:- "Man injured, woman dead after shooting in Orlando neighborhood, deputies say"
+- "Reserved parking coming to Orlando International Airport"
+- "Seminole County opening new fire station in Altamonte Springs"
+- "Hit-and-run driver takes down traffic light pole at Lake Mary intersection, officials confirm"
+- "Florida man speeding through Kissimmee in stolen Mercedes had 15,000 fentanyl pills on him, officials say"
+- "Running list of Central Florida school closures due to severe weather"
+- "Brevard County man arrested in deadly New Years Eve DUI crash in Cocoa Beach"
+- "Volusia County using cash incentives to lure new lifeguards amid shortage"
+- "Palm Coast elevates fix to new construction flooding as high priority"
+- "Man, 80, found dead on side of Palm Coast road, deputies say"
+
+
+[search='breaking news Orlando FL']
+
+url/source:https://www.wesh.com/local-news
+summary:- "Local nonprofit to bring new approach to mental health services in Central Florida" - This quote indicates that there is a local nonprofit in Central Florida that is introducing a new approach to mental health services.
+- "FHP: Driver found in pizzeria parking lot after hitting 3 pedestrians, killing 2 in Flagler County" - This quote mentions a driver who hit three pedestrians, resulting in the death of two individuals in Flagler County.
+- "Flagler County to open cold weather shelter as temperatures drop in Central Florida this week" - This quote states that Flagler County is opening a cold weather shelter due to dropping temperatures in Central Florida.
+- "FHP: 2 dead, 1 hurt in Flagler hit-and-run crash" - This quote highlights a hit-and-run crash in Flagler County that resulted in two deaths and one injury.
+- "FHP: 1 motorcyclist dead after three-vehicle crash" - This quote mentions a three-vehicle crash that resulted in the death of one motorcyclist.
+- "Police: Woman shot, injured in Orlando" - This quote indicates that a woman was shot and injured in Orlando.
+- "FHP: Driver killed in Eustis crash" - This quote mentions a fatal crash in Eustis where a driver was killed.
+- "Deputies: Suspect identified after woman killed in Marion County shooting" - This quote states that a suspect has been identified after a woman was killed in a shooting in Marion County.
+- "Communities to honor Dr. Martin Luther King Jr. in Central Florida" - This quote mentions that communities in Central Florida will be honoring Dr. Martin Luther King Jr.
+- "Eatonville parade celebrates Dr. Martin Luther King Jr.'s legacy" - This quote highlights a parade in Eatonville that celebrates the legacy of Dr. Martin Luther King Jr.
+- "Police looking for driver in deadly Polk County hit-and-run crash" - This quote indicates that the police are searching for a driver involved in a deadly hit-and-run crash in Polk County.
+- "National Transportation Safety Board investigating deadly Brightline crashes in Melbourne" - This quote mentions that the National Transportation Safety Board is investigating deadly crashes involving Brightline in Melbourne.
+
+[search='breaking news Orlando FL']
+
+url/source:https://www.wftv.com/homepage
+summary:- "Central Florida is honoring Dr. Martin Luther King Jr. with these events" - This quote indicates that there are events happening in Central Florida to honor Dr. Martin Luther King Jr. It is not directly related to the original query about news in Orlando and New York City, but it provides information about an event happening in Orlando.
+- "Rain and storm chances increase before next strong cold front arrives" - This quote mentions that there will be an increase in rain and storm chances in the near future. While it doesn't specifically mention Orlando or New York City, it provides information about the weather conditions that could be relevant to both locations.
+- "Woman, child escape serious injuries when tire slams into windshield" - This quote highlights an incident where a woman and child escaped serious injuries when a tire hit their windshield. Although it doesn't directly relate to the original query, it provides information about a local news event.
+- "MCO 'Traveler' refreshed after four decades" - This quote mentions that the MCO 'Traveler' has been refreshed after four decades. While it doesn't directly relate to the original query, it provides information about a local development or renovation project in Orlando.
+
+
+[search='news updates New York City']
+
+url/source:https://www.nbcnewyork.com/
+summary:- "Subfreezing temps in store before NYC has chance at breaking 700+ day snow record" - This quote indicates that New York City is expecting subfreezing temperatures and there is a chance of breaking a 700+ day snow record.
+- "Dad critical after racing to save daughter trapped in fire; entire Queens family hospitalized" - This quote highlights a news story about a father who is in critical condition after trying to save his daughter from a fire in Queens. The entire family has been hospitalized.
+- "Viral video shows shirtless Bills fan helping shovel snow at Highmark Stadium" - This quote mentions a viral video of a shirtless Buffalo Bills fan helping shovel snow at Highmark Stadium.
+- "GOP candidates campaign down to the wire on eve of caucus" - This quote suggests that GOP candidates are campaigning vigorously on the eve of the caucus.
+- "A defiant Netanyahu says no one can halt Israel's war to crush Hamas, including the wo..." - This quote mentions a defiant statement from Netanyahu, stating that no one can halt Israel's war to crush Hamas.
+- "In closing pitch to Iowa Republicans, Trump says their votes can help him punish his e..." - This quote highlights Trump's closing pitch to Iowa Republicans, where he mentions that their votes can help him punish his enemies.
+- "US says Texas barred border agents from entering park to try to save 3 migrants who dr..." - This quote mentions that Texas barred border agents from entering a park to try to save three migrants who drowned.
+- "A weekend of ferocious winter weather could see low-temperature records set in the US ..." - This quote suggests that a weekend of severe winter weather could result in low-temperature records being set in the US.
+
+[search='news updates New York City']
+
+url/source:https://www.cbsnews.com/newyork/local-news/new-york/
+summary:- "Man dies after being shot several times on 3 train in Brooklyn, NYPD says" - It happened just after 8 p.m. on Sunday. No arrests have been made.
+- "Friends remember Lourdes Camilo, killed Saturday in hit-and-run in Bronx" - The 53-year-old is being remembered as a kind woman and a loving mother and grandmother.
+- "Massive tree falls on home in Queens, no injuries reported" - Gusty winds may be to blame. Residents said they warned the city several times that it could happen.
+- "Driver runs red light, injures 4 pedestrians in Midtown, NYPD says" - It happened at 48th Street and Sixth Avenue just after 2:30 p.m. on Sunday. No arrests have been made.
+- "No further budget cuts coming to New York City libraries" - The three library systems had planned to make up cuts by closing libraries on Saturdays and reducing hours on weekdays.
+- "First Alert Forecast: Snow squalls clear as arctic front sweeps region" - Temperatures will keep tumbling tonight. Lows will fall to around 20 degrees in New York City and the teens in the suburbs.
+- "NYPD searching for driver of white SUV in fatal Bronx hit-and-run" - The victim was crossing the street in the crosswalk, but did not have the light at the time he was hit, police said.
+- "Times Square hourglass represents time running out for Israeli hostages" - The group tipped the hourglass as a reminder that time is running out for their loved ones and called on world leaders to help bring their family members homes.
+- "Queens streets resemble rivers after heavy rain causes floods" - There was so much water on roads and sidewalks that some people had difficulty walking.
+
+
+[search='current events New York City']
+
+url/source:https://www.cbsnews.com/newyork/local-news/new-york/
+summary:- "Man dies after being shot several times on 3 train in Brooklyn, NYPD says" - It happened just after 8 p.m. on Sunday. No arrests have been made.
+- "Friends remember Lourdes Camilo, killed Saturday in hit-and-run in Bronx" - The 53-year-old is being remembered as a kind woman and a loving mother and grandmother.
+- "Massive tree falls on home in Queens, no injuries reported" - Gusty winds may be to blame. Residents said they warned the city several times that it could happen.
+- "Driver runs red light, injures 4 pedestrians in Midtown, NYPD says" - It happened at 48th Street and Sixth Avenue just after 2:30 p.m. on Sunday. No arrests have been made.
+- "No further budget cuts coming to New York City libraries" - The three library systems had planned to make up cuts by closing libraries on Saturdays and reducing hours on weekdays.
+- "First Alert Forecast: Snow squalls clear as arctic front sweeps region" - Temperatures will keep tumbling tonight. Lows will fall to around 20 degrees in New York City and the teens in the suburbs.
+- "NYPD searching for driver of white SUV in fatal Bronx hit-and-run" - The victim was crossing the street in the crosswalk, but did not have the light at the time he was hit, police said.
+- "Times Square hourglass represents time running out for Israeli hostages" - The group tipped the hourglass as a reminder that time is running out for their loved ones and called on world leaders to help bring their family members homes.
+- "Queens streets resemble rivers after heavy rain causes floods" - There was so much water on roads and sidewalks that some people had difficulty walking.
+
+[search='current events New York City']
+
+url/source:https://www.takewalks.com/blog/best-apps-nyc-culture-events
+summary:1. "The best way to sort through the abundance of events in New York is to follow some of the best NYC events apps and websites. Find out about what’s happening in the City, as well as discounts and other special offers." 
+
+2. "A free mobile version of the go-to NYC magazine. This easy-to-navigate app includes listings for art, comedy, museums and attractions, music, nightlife, film, theater, and things to do (as well as restaurants, bars, and shopping). You’ll also find curated lists, reviews, booking for tickets and reservations, and discounted offers. If you want to know about new places and read more about them before visiting, this may be the right app for you." 
+
+3. "If anyone has their finger on the pulse of the City, it’s definitely the staff of the New York Times. You can find, both on their website and on their app, up-to-date listings of cultural offerings, events, and experiences (plus restaurants and bars). It also includes reviews and category lists by Times’ critics." 
+
+4. "This website and app by the venerable magazine provides NYC event listings and recommendations from its critics. Browse curated listings by category—movies, art, nightlife, theater, dance, classical music, readings—and find recommendations. There are also audio tours, created by their esteemed writers, podcasts, and much more." 
+
+5. "Produced by New York’s acclaimed PBS television program, the app and the official website include an arts calendar and video previews. The listings can be browsed by category, location, or venue, and you’ll find a detailed map to find anything your heart desires. Go beyond museums to explore the cities and maps with Culture Now. This app allows you to explore public art collections, historical and recent buildings, and cultural institutions."
+            [END VERIFIED SOURCES]
+
+
+            [ACTUAL QUESTION. ANSWER ONLY BASED ON VERIFIED SOURCES]:
+            Summarize the news today for Orlando, FL and New York City
+
+            # IMPORTANT! 
+                - Final response must be expert quality markdown
+                - The only verified sources are between START VERIFIED SOURCES and END VERIFIED SOURCES.
+                - USE ONLY INFORMATION FROM VERIFIED SOURCES TO FORMULATE RESPONSE.
+                - Do not make up any part of an answer - ONLY FORMULATE YOUR ANSWER USING VERIFIED SOURCES.
+                - INCLUDE SECTIONS FOR ALL VERIFIED SOURCES USED TO FORMULATE THE ANSWER.
+            Begin!
+```
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 
