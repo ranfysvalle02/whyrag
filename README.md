@@ -5,7 +5,9 @@ RAG boosts LLMs from storytellers to reliable assistants by weaving in real-worl
 
 FUNCTION CALLING ORCHESTRATION EXPERIMENT - inspired by: [Interactive-RAG](https://github.com/ranfysvalle02/Interactive-RAG)
 
-# _EXPERIMENTAL: FAR FROM READY, JUST GETTING STARTED_
+ **Function-calling should be used 'in addition to' vector search when applicable.** it does not need to replace 'vector search'. But function calling opens the possibility to rather than the 'vector search' part be included in the 'application code' it may be hidden behind an API and interacted with using function calling.
+
+### _EXPERIMENTAL: FAR FROM READY, JUST GETTING STARTED_
 
 
 The below README content is from the original repository. What we are doing on this experiment is replacing:
