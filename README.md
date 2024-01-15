@@ -11,7 +11,8 @@ The below README content is from the original repository. What we are doing on t
 
 ```
 # replace vector search retrieval based on query and replace it with a step called: "r_n_d"
-# "r_n_d" => generates google queries to answer the question, and summarizes the results to augment context.
+# "r_n_d" => generates google queries to answer the question, and summarizes the results.
+# this "research" is then used to augment the context
 # with the augmented context, an answer is formulated for the original query.
 #vector_search.recall(
 self.r_n_d(
