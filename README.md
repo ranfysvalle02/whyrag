@@ -20,6 +20,108 @@ self.r_n_d(
 )
 ```
 
+
+```
+    def r_n_d(
+        self, text: str
+    ):
+        print("R&D starts now")
+        response = self.llm.create(
+                messages=[
+                    {"role": "system", "content": "Use your actions/tools available to answer the user prompt."},
+                    {"role": "system", "content":f"""
+        [EXPECTED BEHAVIOR]
+        # Input, Thought, Observation, Action
+            - User Input: "What is kubernetes?"
+            - Thought: I cannot provide a direct answer to the question "What is Kubernetes?".
+            - Observation: I have an action available called "summarize_search_results". I will use this action to answer the user's question.
+            - Action: "summarize_search_results"(original_query:str, queries_to_help_answer_the_original_query: List[min=4])
+"""},
+                    {"role": "user", "content": f"""
+[user prompt]
+{text}                  
+[end user prompt]
+                     
+[summarized search results]
+(insert output of summarize_search_results here)                     
+[end summarized search results]
+
+DO NOT ANSWER THE QUESTION DIRECTLY, ONLY OUTPUT THE 'summarized search results'
+"""},
+                ],
+                actions=[self.summarize_search_results],
+                stream=False,
+            )
+        print(response)
+        print("R&D ends now")
+        return response
+```
+
+```
+@action(name="summarize_search_results", stop=True)
+    def summarize_search_results(self,original_query:str, queries: List) -> str:
+        """
+        Invoke this ALWAYS to summarize search results. It will help answer the original user query.
+        It will only work if you have at least 4 "google search queries" that together will help build the best answer for the original user query.
+        [EXAMPLE]
+        - User Input: "what is kubernetes?"
+        
+        Args:
+            original_query (str): The user's original query
+            queries (List): list of at least 4 "google search queries" that together will help build the best answer for the original user query. [min=4]
+        Returns:
+            str: Text with the Google Search results
+        """
+        utils.print_log("Action: summarize_search_results")
+
+        utils.print_log("Action: summarize_search_results->original_query: " + original_query)
+        utils.print_log("Action: summarize_search_results->queries: " + str(queries))
+        with self.st.spinner(f"Summarizing search results..."):
+            result = ""
+            for query in queries:
+                web_search_results = self.search_web(query)
+                first2 = extract_first_two_urls(web_search_results)
+                for url in first2:
+                    web_chunk = self.extract_plain_text(url)[:5000]
+                    tmp_summary = self.llm.create(messages=[
+                        {"role": "system", "content": "You are a helpful assistant that summarizes web content to help answer an original query. You are detail oriented and always strive to provide an accurate and detailed summary that helps best answer the original query."},
+                        {"role": "system", "content": "[original query]"+original_query+"[end original query] \n\nfacts to consider:\n[current year=2024]\n\n"},
+                        {"role": "user", "content": "Take note of direct quotes (min.length=4 sentences) that help answer the original query. BE AS VERBOSE AS POSSIBLE. USE LIST FORMAT AND ONLY INCLUDE QUOTES THAT ARE RELEVANT TO THE ORIGINAL QUERY. INCLUDE DETAILS THAT CAN HELP BUILD THE BEST POSSIBLE ANSWER TO THE ORIGINAL QUERY."},
+                        {"role": "user", "content": "[web content to summarize if relevant to original query]:\n"+web_chunk+"[end web content] \n\n"},
+                        {"role": "user", "content": "REMEMBER!! [original query]"+original_query+"[end original query] \n\n RETURN ONLY THE DETAILED QUOTES FROM THE TEXT IN LIST FORMAT."},
+                    ],actions=[],stream=False)
+                    result += f"[search='{query}']\n\nurl/source:{url}\nsummary:{tmp_summary}\n\n"
+                result += "\n"
+            print("Action: summarize_search_results->result: " + result)
+            return result
+```
+
+
+```
+def extract_plain_text(self,url):
+        """Extracts plain text from a website render.
+
+        Args:
+            url (str): The URL of the website to extract text from.
+
+        Returns:
+            str: The plain text content of the website.
+        """
+
+        try:
+            response = requests.get(url)
+            response.raise_for_status()  # Raise an exception for non-200 status codes
+
+            soup = BeautifulSoup(response.content, 'html.parser')
+            text = soup.get_text(separator='\n')  # Use newline as separator for readability
+
+            return text.strip()  # Remove extra whitespace
+
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching website: {e}")
+            return ""
+```
+
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 
