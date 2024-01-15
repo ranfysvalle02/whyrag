@@ -58,7 +58,7 @@ DO NOT ANSWER THE QUESTION DIRECTLY, ONLY OUTPUT THE 'summarized search results'
 ```
 
 ```
-@action(name="summarize_search_results", stop=True)
+    @action(name="summarize_search_results", stop=True)
     def summarize_search_results(self,original_query:str, queries: List) -> str:
         """
         Invoke this ALWAYS to summarize search results. It will help answer the original user query.
@@ -96,31 +96,6 @@ DO NOT ANSWER THE QUESTION DIRECTLY, ONLY OUTPUT THE 'summarized search results'
             return result
 ```
 
-
-```
-def extract_plain_text(self,url):
-        """Extracts plain text from a website render.
-
-        Args:
-            url (str): The URL of the website to extract text from.
-
-        Returns:
-            str: The plain text content of the website.
-        """
-
-        try:
-            response = requests.get(url)
-            response.raise_for_status()  # Raise an exception for non-200 status codes
-
-            soup = BeautifulSoup(response.content, 'html.parser')
-            text = soup.get_text(separator='\n')  # Use newline as separator for readability
-
-            return text.strip()  # Remove extra whitespace
-
-        except requests.exceptions.RequestException as e:
-            print(f"Error fetching website: {e}")
-            return ""
-```
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
